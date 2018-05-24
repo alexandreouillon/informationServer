@@ -20,4 +20,10 @@ class Bitcoin():
     def update(self):
         self.trickerJson = requests.get("https://blockchain.info/fr/ticker").text
         self.balanceJson = requests.get("https://blockchain.info/fr/balance?active=" + self.pubKey).text
+    
+    def verify_seuil(self, seuilHigh, seuilLow):
+        if self.getWalletBalanceOtr('EUR') < seuilLow or self.getWalletBalanceOtr('EUR') > seuilHigh:
+            return True
+        else:
+            return False
 
