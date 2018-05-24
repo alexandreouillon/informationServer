@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json, requests, time
 
 PUBKEY = "1AgEqqVJws4mEfK4PaMqM7pubhBUqkZ3zJ"
