@@ -24,7 +24,7 @@ class Main():
             os.environ.get('BITCOINPUBKEY', None),
             os.environ.get('FREEAPIUSER', None), 
             os.environ.get('FREEAPIPASS', None)
-        self.params = json.loads(open("config.json", "r"))
+        self.params = json.loads(open("config/routine.json", "r"))
         
 
     def taskHandle(self):
@@ -47,6 +47,7 @@ class Main():
         else:
             print("wtf")
         print("\t")
+        
     def send_message(self, message):
         message = str(message).replace(" ", "%20")
         url = "https://smsapi.free-mobile.fr/sendmsg?user="+self.freeApiUser+"&pass="+self.freeApiPass+"&msg="+message
