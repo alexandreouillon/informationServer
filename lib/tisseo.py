@@ -15,6 +15,6 @@ class TisseoRSS():
         description = description.replace("<br />","\n")
         return description
     
-    def show
+
 
 

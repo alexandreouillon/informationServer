@@ -21,10 +21,4 @@ class Bitcoin():
     def update(self):
         self.trickerJson = requests.get("https://blockchain.info/fr/ticker").text
         self.balanceJson = requests.get("https://blockchain.info/fr/balance?active="+PUBKEY).text
-bitcoin = Bitcoin()
-while True:
-    lastTricker = bitcoin.getTricker("EUR")
-    bitcoin.update()
-    print(str(bitcoin.getWalletBalanceOtr("EUR"))[0:5],"€",end=" - ")
-    print(str(bitcoin.getDifference("EUR", lastTricker))[0:5],"%")
-    time.sleep(10)
+
