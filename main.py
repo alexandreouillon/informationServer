@@ -2,12 +2,12 @@
 from __future__ import print_function
 import lib.bitcoin as BtcLib
 #import lib.tisseo as TisseoLib
-import time, sys, requests, dotenv, json
+import time, sys, requests, dotenv, json, os
 
 class Main():
     def __init__(self):
         self.readConfig()
-
+        self.btcWallet = BtcLib.Bitcoin(self.bitcoinPubKey)
 
     def loop(self):
         while True:
@@ -20,33 +20,16 @@ class Main():
 
     def readConfig(self):
         dotenv.load_dotenv(".env")
-        self.btcWallet, self.freeApiUser, self.freeApiPass = 
-            os.environ.get('BITCOINPUBKEY', None),
-            os.environ.get('FREEAPIUSER', None), 
-            os.environ.get('FREEAPIPASS', None)
-        self.params = json.loads(open("config/routine.json", "r"))
+        self.bitcoinPubKey, self.freeApiUser, self.freeApiPass = os.environ.get('BITCOINPUBKEY', None), os.environ.get('FREEAPIUSER', None),  os.environ.get('FREEAPIPASS', None)
+        self.params = json.loads(str(open("config/routine.json", "r").readlines()).replace("\n"," "))
         
 
     def taskHandle(self):
-        
+        print("pute")
     
 
     def routine_bitcoin(self):
-        lastTricker = self.btcWallet.getTricker("EUR")
-        self.btcWallet.update()
-        #sys.stdout.write(f'\033[{91}m')
-        print('\x1b[6;30;47m' + str(self.btcWallet.getWalletBalanceOtr("EUR"))[0:5]+"€"+'\x1b[0m',end=" - ")
-        difference = self.btcWallet.getDifference("EUR", lastTricker)
-        if difference < 0:
-            print('\x1b[6;37;41m'+str(str(difference)+"000")[0:6]+"%"+'\x1b[0m',end="")
-        elif difference == 0:
-            print('\x1b[6;37;44m '+str(str(difference)+"000")[0:5]+"%"+'\x1b[0m',end="")
-        elif difference > 0:
-            print('\x1b[6;37;42m+'+str(str(difference)+"000\a")[0:5]+"%"+'\x1b[0m',end="")
-            #self.send_message(str(str(self.btcWallet.getWalletBalanceOtr("EUR"))[0:5]+"€"))
-        else:
-            print("wtf")
-        print("\t")
+        print(str(self.btcWallet.printBitcoinInfos()))
         
     def send_message(self, message):
         message = str(message).replace(" ", "%20")

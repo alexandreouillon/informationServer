@@ -26,4 +26,21 @@ class Bitcoin():
             return True
         else:
             return False
+    def composeMessage(self):
+        return
+    def printBitcoinInfos(self):
+        self.lastTricker = self.getTricker("EUR")
+        self.update()
+
+        text = str('\x1b[6;30;47m' + str(self.getWalletBalanceOtr("EUR"))[0:5]+"€"+'\x1b[0m - ')
+        difference = self.getDifference("EUR", self.lastTricker)
+        if difference < 0:
+            text = text + str('\x1b[6;37;41m'+str(str(difference)+"000")[0:6]+"%"+'\x1b[0m')
+        elif difference == 0:
+            text = text + str('\x1b[6;37;44m '+str(str(difference)+"000")[0:5]+"%"+'\x1b[0m')
+        elif difference > 0:
+            text = text + str('\x1b[6;37;42m+'+str(str(difference)+"000\a")[0:5]+"%"+'\x1b[0m')
+            #self.send_message(str(str(self.getWalletBalanceOtr("EUR"))[0:5]+"€"))
+        print(text)
+
 
