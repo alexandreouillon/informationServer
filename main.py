@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 import lib.bitcoin as BtcLib
-#import lib.tisseo as TisseoLib
+import lib.tisseo as TisseoLib
 import time, sys, requests, dotenv, json, os
 
 class Main():
     def __init__(self):
         self.readConfig()
         self.btcWallet = BtcLib.Bitcoin(self.bitcoinPubKey)
-
+        self.tisseoInfo = TisseoLib.TisseoRSS()
     def loop(self):
         while True:
             self.routine_bitcoin()
+            self.tisseoInfo.printLastInformation()
             time.sleep(0)
 #            self.guid = self.tisseoRSS.get_guid(0)
 #            if not self.guid == self.guid_old:

@@ -1,4 +1,5 @@
 import feedparser
+from bs4 import BeautifulSoup
 
 class TisseoRSS():
     def __init__(self):
@@ -15,6 +16,7 @@ class TisseoRSS():
         description = description.replace("<br />","\n")
         return description
     
-
+    def printLastInformation(self):
+        print(self.get_title(0), self.get_description(0))
 
 
