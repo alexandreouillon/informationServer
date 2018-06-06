@@ -12,9 +12,8 @@ class TisseoRSS():
         return self.tisseoRSS.entries[id].title
 
     def get_description(self,id):
-        description = str(self.tisseoRSS.entries[id].description)
-        description = description.replace("<br />","\n")
-        return description
+        soupe = BeautifulSoup(str(self.tisseoRSS.entries[id].description))
+        return soupe.
     
     def printLastInformation(self):
         print(self.get_title(0), self.get_description(0))
