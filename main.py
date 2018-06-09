@@ -22,7 +22,7 @@ class Main():
     def readConfig(self):
         dotenv.load_dotenv(".env")
         self.bitcoinPubKey, self.freeApiUser, self.freeApiPass = os.environ.get('BITCOINPUBKEY', None), os.environ.get('FREEAPIUSER', None),  os.environ.get('FREEAPIPASS', None)
-        self.params = json.loads(str(open("config/routine.json", "r").readlines()).replace("\n"," "))
+        #self.params = json.loads(str(open("config/routine.json", "r").readlines()).replace("\n"," "))
         
 
     def taskHandle(self):
