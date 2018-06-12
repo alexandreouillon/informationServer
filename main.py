@@ -13,7 +13,7 @@ class Main():
         while True:
             self.routine_bitcoin()
             self.tisseoInfo.printLastInformation()
-            time.sleep(120)
+            time.sleep(1000)
 #            self.guid = self.tisseoRSS.get_guid(0)
 #            if not self.guid == self.guid_old:
 #                print("")

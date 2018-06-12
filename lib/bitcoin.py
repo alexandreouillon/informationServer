@@ -31,8 +31,8 @@ class Bitcoin():
     def printBitcoinInfos(self):
         self.lastTricker = self.getTricker("EUR")
         self.update()
-
-        text = str('\x1b[6;30;47m' + str(self.getWalletBalanceOtr("EUR"))[0:5]+"€"+'\x1b[0m - ')
+        balance = str(self.getWalletBalanceOtr("EUR"))[0:5]
+        text = str('\x1b[6;30;47m' + balance +"€"+'\x1b[0m - ')
         difference = self.getDifference("EUR", self.lastTricker)
         if difference < 0:
             text = text + str('\x1b[6;37;41m'+str(str(difference)+"000")[0:6]+"%"+'\x1b[0m')
@@ -42,5 +42,4 @@ class Bitcoin():
             text = text + str('\x1b[6;37;42m+'+str(str(difference)+"000\a")[0:5]+"%"+'\x1b[0m')
             #self.send_message(str(str(self.getWalletBalanceOtr("EUR"))[0:5]+"€"))
         print(text)
-
-
+        return str("Vous avez actuellement "+balance+"€ en bitcoins. Une augmentation de "+str(difference)+"% depuis 2 minutes") 
