@@ -13,7 +13,7 @@ class Main():
         while True:
             self.routine_bitcoin()
             self.tisseoInfo.printLastInformation()
-            time.sleep(0)
+            time.sleep(120)
 #            self.guid = self.tisseoRSS.get_guid(0)
 #            if not self.guid == self.guid_old:
 #                print("")
@@ -30,13 +30,12 @@ class Main():
     
 
     def routine_bitcoin(self):
-        print(str(self.btcWallet.printBitcoinInfos()))
+        self.send_message(str(self.btcWallet.printBitcoinInfos()))
         
     def send_message(self, message):
         message = str(message).replace(" ", "%20")
         url = "https://smsapi.free-mobile.fr/sendmsg?user="+self.freeApiUser+"&pass="+self.freeApiPass+"&msg="+message
-        
-        print(requests.get(url).status_code)
+        print("pute",requests.get(url).status_code)
    # def routine_tisseo(self):
 
 main = Main()
