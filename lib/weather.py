@@ -3,7 +3,7 @@ import requests, json
 class Weather:
 	def __init__(self, apiKey):
 		self.apiKey = apiKey
-		self.emojisCorres = {"Rain":"☔", "llCouds":"☁️"}
+		self.emojisCorres = {"Rain":"☔", "Clouds":"☁️"}
 	def getActualWeather(self, city):
 		url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + self.apiKey
 		weatherPage = requests.get(url).text
